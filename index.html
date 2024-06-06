@@ -1,74 +1,953 @@
-Claro, aqui está o código completo com o novo vídeo substituído:
+Claro, aqui está o código completo da página com o vídeo substituído pelo novo vídeo fornecido:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Section</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .col-12 {
-      width: 100%;
-    }
-    .col-lg-9 {
-      width: 75%;
-    }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      height: 0;
-      overflow: hidden;
-    }
-    .player-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .gold-gradient {
-      background: linear-gradient(135deg, #f0c27b 0%, #4b1248 100%);
-      color: white;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugar Defender</title>
+
+    <script data-cfasync="false" type="text/javascript" src="js/10042665-10047246.js"></script>
+
+    <meta name="description" content="This advanced blend of 24 proven ingredients supports healthy glucose levels and natural weight loss">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/tasks.js"></script>
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-V9Y9DC7E5H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V9Y9DC7E5H', {});
+
+        window.ga = window.ga || {};
+
+        // config EPC log API
+        ga.log = '/epc.php';
+
+        ga.setCookie = function (name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        ga.getCookie = function (name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) 
+                    return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        ga.logVisit = function (){
+            // JSON data to send
+            const $data = {
+                uniqid: ga.uniqid,
+                action:"visit"
+            };
+            navigator.sendBeacon(ga.log, JSON.stringify($data));  
+        }
+
+        ga.logPurchase = function (uniqid, sku, price, url, query, type){
+            // JSON data to send
+            var sesid2 = ga.getCookie('sessid2');
+            sesid2 = sesid2 === null ? "" : sesid2;
+            host = window.location.hostname;
+            const $data = {
+                uniqid: uniqid,
+                action: "purchase",
+                url: url,
+                type: type,
+                sku: sku,
+                price: price,
+                sesid2: sesid2,
+                host: host
+            };
+            navigator.sendBeacon(ga.log, JSON.stringify($data));  
+        }
+        
+        ga.logBeginCheckout = function (uniqid, sku, url, query){
+            // JSON data to send
+            var sesid2 = ga.getCookie('sessid2');
+            sesid2 = sesid2 === null ? "" : sesid2;        
+            host = window.location.hostname;
+            const $data = {
+                uniqid: uniqid,
+                action: "begin_checkout",
+                sku: sku,
+                url: url,
+                query: query,
+                sesid2: sesid2,            
+                host: host
+            };
+            navigator.sendBeacon(ga.log, JSON.stringify($data));  
+        }   
+        
+        ga.ViewItem = function ($itemSKU,$itemValue){
+            gtag("event", "view_item", {
+                currency: "USD",
+                value: $itemValue,
+                items: [
+                    {
+                        item_id: $itemSKU,
+                        item_name: "Sugar Defender (" + $itemSKU + ")",
+                    }]
+            });
+            console.log("GA4 Track View Item", $itemSKU, $itemValue);
+        }
+
+        ga.BeginCheckout = function ($itemSKU,$itemValue){
+            gtag("event", "begin_checkout", {
+                currency: "USD",
+                value: $itemValue,
+                items: [
+                    {
+                        item_id: $itemSKU,
+                        item_name: "Sugar Defender (" + $itemSKU + ")",
+                        quantity: 1,
+                        price: $itemValue                    
+                    }]
+            });
+            console.log("GA4 Track Begin Checkout", $itemSKU, $itemValue);
+        }
+
+        ga.Purchase = function ($order,$itemSKU,$itemValue,$url = false){
+
+            $url = $url || window.location.pathname + encodeURIComponent(window.location.search);
+
+            gtag("event", "purchase", {
+                currency: "USD",
+                transaction_id: $order,
+                value: $itemValue,
+                page_location: $url,
+                items: [
+                    {
+                        item_id: $itemSKU,
+                        item_name: "Sugar Defender (" + $itemSKU + ")",
+                        quantity: 1,
+                        price: $itemValue
+                    }]
+            });    
+
+            if(typeof customTracker === 'function'){
+                customTracker($order, $itemSKU, $itemValue);
+            }             
+
+            console.log("GA4 Track Purchase", $order, $itemSKU, $itemValue);        
+        }
+
+        ga.waitFor = function (variableName, callback) {
+            if (typeof ga[variableName] !== 'undefined' && ga[variableName] !== null) {
+                callback();
+            } else {
+                setTimeout(function() {
+                ga.waitFor(variableName, callback);
+                }, 100);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+                        ga.uniqid = ga.getCookie('ga_uniqid');
+                // ga.uniqid = Math.floor(Math.random() * 100000) + Date.now().toString();
+                // log visits for Earning per Click computing
+                ga.url = window.location.pathname;
+                ga.query = encodeURIComponent(window.location.search);
+                // ga.logVisit;
+                // ga.setCookie('ga_uniqid', ga.uniqid, 3);
+                
+                                ga.ViewItem("SDF01", 69);    
+                                ga.ViewItem("SDF06", 294);    
+                                ga.ViewItem("SDF03", 177);    
+                                
+                ga.buttons = document.getElementsByClassName('addToCart');
+                for(var i = 0; i < ga.buttons.length; i++) {
+                    ga.buttons[i].addEventListener('click', (e)  => {
+                        ga.BeginCheckout(e.target.dataset.sku, e.target.dataset.price);
+                        ga.setCookie(ga.uniqid + '_sku', e.target.dataset.sku, 3);
+                        ga.setCookie(ga.uniqid + '_price', e.target.dataset.price, 3);
+                        ga.setCookie(ga.uniqid + '_url', window.location.pathname, 3);
+                        ga.setCookie(ga.uniqid + '_query', encodeURIComponent(window.location.search), 3);
+                        ga.setCookie(ga.uniqid + '_type', "vsl", 3);
+                        ga.logBeginCheckout(ga.uniqid, e.target.dataset.sku, window.location.pathname, encodeURIComponent(window.location.search));
+                        if(typeof window[e.target.dataset.callback] === 'function'){
+                            window[e.target.dataset.callback](e);
+                        }                        
+                    }, false);
+                } 
+            
+                });
+    </script>
+    <script>
+    const loadBGScript = (flag) => {  
+        var mysrc = "https://tracking.buygoods.com/track/?a=8721&firstcookie=0"
+            +"&tracking_redirect=&referrer="+encodeURIComponent(document.referrer)
+            +"&sessid2="+ReadCookie('sessid2')+"&product=SDF01,SDF06,SDF03&caller_url="+encodeURIComponent(window.location.href);
+        if(typeof add_to_cart !== 'undefined') {
+            mysrc = mysrc+'&add_to_cart='+add_to_cart;
+        }
+        var newScript = document.createElement('script');
+        newScript.type = 'text/javascript';
+        newScript.defer = true;
+        newScript.src = mysrc;
+        newScript.setAttribute('data-cfasync', 'false');
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(newScript, s);
+        flag('taskFinished'); 
+    };
+    function ReadCookie(name){name += '='; var parts = document.cookie.split(/;\s*/);for (var i = 0; i < parts.length; i++) {var part = parts[i]; if (part.indexOf(name) == 0) return part.substring(name.length)} return '';}
+    </script>
+    <link rel="preload" href="https://scripts.converteai.net/6cecaf89-7180-45f7-bef5-065b988904f3/players/65b954cb85f1840008636b3d/player.js" as="script">
+    <link rel="preload" href="https://cdn
+
+.converteai.net/lib/js/smartplayer/v1/smartplayer.min.js" as="script">
+    <link rel="preload" href="https://images.converteai.net/6cecaf89-7180-45f7-bef5-065b988904f3/players/65b954cb85f1840008636b3d/thumbnail.jpg" as="image">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
+    <script type="text/javascript">setTimeout(function () {var i = document.createElement("iframe");i.async = true;i.style="display:none";i.setAttribute("src", "https://buygoods.com/affiliates/go/conversion/iframe/bg?a=8721&t=9c1403bbbf7cb6b12ddb9927a7fbd88d&s="+ReadCookie('sessid2'));document.body.appendChild(i);}, 1000);</script>
+    <script src="js/player.js" async=""></script>
 </head>
-<body>
-  <section id="video-section" class="gold-gradient">
+<body data-disable-user-interaction="" class="no-user-interaction">
+<section id="video-section" class="gold-gradient">
     <div class="container">
-      <div class="row">
-        <div class="video-wrapper col-12 col-lg-9">
-          <div id="stream" class="stream">
-            <div class="player-wrapper">
-              <div id="vid_660b6f84dc636600080f72c9" style="position:relative;width:100%;padding: 177.63157894736844% 0 0;">
-                <img id="thumb_660b6f84dc636600080f72c9" src="https://images.converteai.net/65eee9f4-ec2d-46b0-a2b3-9b1ecf0653c2/players/660b6f84dc636600080f72c9/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
-                <div id="backdrop_660b6f84dc636600080f72c9" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
-              </div>
-              <script type="text/javascript" id="scr_660b6f84dc636600080f72c9">
-                var s = document.createElement("script"); 
-                s.src = "https://scripts.converteai.net/65eee9f4-ec2d-46b0-a2b3-9b1ecf0653c2/players/660b6f84dc636600080f72c9/player.js", 
-                s.async = !0, document.head.appendChild(s);
-              </script>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="heading-3 text-center py-4 my-2">Doctors Shocked: <br> <span class="fw-bold heading-2">Can This Enzyme Bust Diabetes?</span>
+                </h2>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="row">
+            <div class="video-wrapper col-12 col-lg-9">
+                <div id="stream" class="stream">
+                    <div class="player-wrapper">
+                        <div id="vid_660b6f84dc636600080f72c9" style="position:relative;width:100%;padding: 177.63157894736844% 0 0;">
+                            <img id="thumb_660b6f84dc636600080f72c9" src="https://images.converteai.net/65eee9f4-ec2d-46b0-a2b3-9b1ecf0653c2/players/660b6f84dc636600080f72c9/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;">
+                            <div id="backdrop_660b6f84dc636600080f72c9" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div>
+                        </div>
+                        <script type="text/javascript" id="scr_660b6f84dc636600080f72c9">
+                            var s=document.createElement("script"); 
+                            s.src="https://scripts.converteai.net/65eee9f4-ec2d-46b0-a2b3-9b1ecf0653c2/players/660b6f84dc636600080f72c9/player.js", 
+                            s.async=!0,document.head.appendChild(s); 
+                        </script> 
+                        <style> 
+                            .elementor-element:has(#smartplayer) { width: 100%; } 
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-9 mx-auto">
+                <h6 class="fw-bold small text-center m-0 py-4">IMPORTANT HEALTH UPDATE May take up to 10 seconds to load. Make sure your sound is on</h6>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
+<section id="dtc" class="dtc mt-sm-5" style="display: none;">
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="heading-2 mb-4 mb-sm-5">Claim your Discounted <span class="fw-bold">Sugar Defender</span> Below <br> While Stock Lasts</h1>
+                <div class="countdown mb-4 mb-sm-5">
+                    <div hidden="">
+                        <span class="days"></span>
+                        <div class="text">Days</div>
+                    </div>
+                    <div hidden="">
+                        <span class="hours"></span>
+                        <div class="text">Hours</div>
+                    </div>
+                    <div class="ms-3">
+                        <span class="minutes"></span>
+                        <div class="text">Minutes</div>
+                    </div>
+                    <div>
+                        <span class="seconds"></span>
+                        <div class="text">Seconds</div>
+                    </div>
+                    <div class="mns" hidden="">minutes left!</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-4 mb-md-0 order-3 order-md-1">
+                <div class="theme-border-radius border border-2 border-gray text-center p-4">
+                    <h3 class="mb-0 fw-bold">Try One</h3>
+                    <p class="small mb-0">30 Day Supply</p>
+                    <div class="col-9 mx-auto py-3">
+                        <picture>
+                            <source srcset="images/SUGARDEFENDERx1-500px.webp" type="image/webp">
+                            <img src="images/SUGARDEFENDERx1-500px.png" alt="Sugar Defender 1 Bottle" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h4 class="display-2 fw-bold">$69</h4>
+                        <div class="ms-2 pb-2 small">
+                            <span class="d-block text-start">Per</span>
+                            <span class="d-block text-start">Bottle</span>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-2">YOU SAVE $110</p>
+                    <p class="text-white d-none d-md-block">No bonuses</p>
+                    <div class="col-12 text-center mb-4">
+                        <a class="cta addToCart btn-new btn-primary-new d-block px-0" data-sku="SDF01" data-price="69" data-link-type="vsl-cta" data-link-index="1" data-callback="ctaEvents" href="https://www.buygoods.com/secure/checkout.html?account_id=8721&amp;product_codename=SDF01&amp;redirect=aHR0cHM6Ly9zdWdhcmRlZmVuZGVyMjQuY29tL2IvdTEudi4xMzIucGhw&amp;vid1=eyJpZCI6IjMxNDczMTcxNzY5NDE4MCJ9&amp;vid2=eyJob3N0Ijoic3VnYXJkZWZlbmRlcjI0LmNvbSIsInBhZ2UiOiJiXC8xMDEucGhwIn0=" target="_blank">Add to cart</a>
+                    </div>
+                    <p class="small mb-3">60 Day Money-Back Guarantee</p>
+                    <div class="col-7 mx-auto mb-3">
+                        <picture>
+                            <source srcset="images/cards.webp" type="image/webp">
+                            <img src="images/cards.png" alt="Card" class="img-fluid">
+                        </picture>
+                    </div>
+                    <p class="mb-1">TOTAL: <span class="text-decoration-line-through">$179</span> <span class="fw-bold">$69</span></p>
+                    <p class="fw-bold mb-0">+ SHIPPING</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4 mb-md-0 order-1 order-md-2">
+                <div class="theme-border-radius border-primary-new text-center p-4">
+                    <h3 class="mb-0 fw-bold">Best Value</h3>
+                    <p class="small mb-0">180 Day Supply</p>
+                    <div class="col-9 mx-auto py-3">
+                        <picture>
+                            <source srcset="images/SUGARDEFENDERx6-500px.webp" type="image/webp">
+                            <img src="images/SUGARDEFENDERx6-500px.png" alt="Sugar Defender 6 Bottle" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h4 class="display-2 fw-bold">$49</h4>
+                        <div class="ms-2 pb-2 small">
+                            <span class="d-block text-start">Per</span>
+                            <span class="d-block text-start">Bottle</span>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-2">YOU SAVE $780</p>
+                    <p>+
+
+ 2 FREE E-BOOKS</p>
+                    <div class="col-12 text-center mb-4">
+                        <a class="cta addToCart btn-new btn-primary-new d-block px-0" data-sku="SDF06" data-price="294" data-link-type="vsl-cta" data-link-index="6" data-callback="ctaEvents" href="https://www.buygoods.com/secure/checkout.html?account_id=8721&amp;product_codename=SDF06&amp;redirect=aHR0cHM6Ly9zdWdhcmRlZmVuZGVyMjQuY29tL2IvdTEucGhw&amp;vid1=eyJpZCI6IjMxNDczMTcxNzY5NDE4MCJ9&amp;vid2=eyJob3N0Ijoic3VnYXJkZWZlbmRlcjI0LmNvbSIsInBhZ2UiOiJiXC8xMDEucGhwIn0=" target="_blank">Add to cart</a>
+                    </div>
+                    <p class="small mb-3">60 Day Money-Back Guarantee</p>
+                    <div class="col-7 mx-auto mb-3">
+                        <picture>
+                            <source srcset="images/cards.webp" type="image/webp">
+                            <img src="images/cards.png" alt="Card" class="img-fluid">
+                        </picture>
+                    </div>
+                    <p class="mb-1">TOTAL: <span class="text-decoration-line-through">$1074</span> <span class="fw-bold">$294</span></p>
+                    <p class="fw-bold mb-0">+ FREE US SHIPPING</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4 order-2 order-md-3">
+                <div class="theme-border-radius border border-2 border-gray text-center p-4">
+                    <h3 class="mb-0 fw-bold">Most Popular</h3>
+                    <p class="small mb-0">90 Day Supply</p>
+                    <div class="col-9 mx-auto py-3">
+                        <picture>
+                            <source srcset="images/SUGARDEFENDERx3-500px.webp" type="image/webp">
+                            <img src="images/SUGARDEFENDERx3-500px.png" alt="Sugar Defender 3 Bottle" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h4 class="display-2 fw-bold">$59</h4>
+                        <div class="ms-2 pb-2 small">
+                            <span class="d-block text-start">Per</span>
+                            <span class="d-block text-start">Bottle</span>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-2">YOU SAVE $360</p>
+                    <p>+ 2 FREE E-BOOKS</p>
+                    <div class="col-12 text-center mb-4">
+                        <a class="cta addToCart btn-new btn-primary-new d-block px-0" data-sku="SDF03" data-price="177" data-link-type="vsl-cta" data-link-index="3" data-callback="ctaEvents" href="https://www.buygoods.com/secure/checkout.html?account_id=8721&amp;product_codename=SDF03&amp;redirect=aHR0cHM6Ly9zdWdhcmRlZmVuZGVyMjQuY29tL2IvdTEucGhw&amp;vid1=eyJpZCI6IjMxNDczMTcxNzY5NDE4MCJ9&amp;vid2=eyJob3N0Ijoic3VnYXJkZWZlbmRlcjI0LmNvbSIsInBhZ2UiOiJiXC8xMDEucGhwIn0=" target="_blank">Add to cart</a>
+                    </div>
+                    <p class="small mb-3">60 Day Money-Back Guarantee</p>
+                    <div class="col-7 mx-auto mb-3">
+                        <picture>
+                            <source srcset="images/cards.webp" type="image/webp">
+                            <img src="images/cards.png" alt="Card" class="img-fluid">
+                        </picture>
+                    </div>
+                    <p class="mb-1">TOTAL: <span class="text-decoration-line-through">$537</span> <span class="fw-bold">$177</span></p>
+                    <p class="fw-bold mb-0">+ FREE US SHIPPING</p>
+                </div>
+            </div>
+            <div class="col-12 text-center mt-sm-3 order-4">
+                <p>Our customers say <span class="fw-bold me-2">4.98/5</span> <img src="images/stars.png" alt="Stars" class="img-fluid pb-2"> <span class="ms-2">based on 2000+ reviews</span></p>
+                <div><a href="#reviews" class="text-dark">View Reviews</a> | <a href="#faqs" class="text-dark">View FAQ’s</a></div>
+            </div>
+        </div> 
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-10 mx-auto text-center">
+                <div class="bg-light theme-border-radius p-4 p-md-5">
+                    <h2 class="heading-2 mb-5">The #1 Rated Blood Sugar Formula</h2>
+                    <p>The biggest question I get asked is, what happens if my blood sugar doesn't improve or I don't lose weight?</p>
+                    <p>Sugar Defender has helped thousands safely assist their blood sugar and drop pounds... <br>Quickly, easily and from home.</p>
+                    <p>Despite this, I fully understand if you're still uncertain. So to take the risk out of ordering...</p>
+                    <p class="mb-5">Every bottle of Sugar Defender comes with a full 60-day guarantee. You can try it out and see its improving effects on your blood sugar with absolutely no-risk whatsoever!</p>
+                    <p class="fw-semibold fs-5 fst-italic">Tom Green Creator, Sugar Defender</p>
+                    <div class="col-5 mx-auto">
+                        <picture class="img-fluid">
+                            <source srcset="images/signature.webp" type="image/webp">
+                            <img src="images/signature.png" alt="Signature" class="img-fluid">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="theme-border-radius blue-dark-bg text-white p-4 p-md-5">
+                    <div class="col-12 col-sm-10 col-md-8 mx-auto py-5">
+                        <h2 class="heading-2 text-center mb-5">Order 6 Bottles Or 3 Bottles And Get <span class="fw-bold">2 Free Bonuses</span>!</h2>
+                        <div class="theme-border-radius-sm blue-light-bg d-md-flex p-4 p-md-5 mb-4 align-items-center">
+                            <div class="col-5 col-md-3 mx-auto mb-4 mb-md-0">
+                                <picture class="img-fluid">
+                                    <source media="(min-width: 500px)" srcset="images/book1.jpg">
+                                    <source srcset="images/book1-m.jpg">
+                                    <img srcset="images/book1-m.jpg 200w, images/book1.jpg 600w" sizes="(max-width: 500px) 200px, 600px" src="images/book1.jpg" alt="Free Bonus Ultimate Tea Remedies" class="img-fluid theme-border-radius-sm">
+                                </picture>
+                            </div>
+                            <div class="col-9 mx-auto ps-md-5 text-center text-md-start">
+                                <h3 class="heading-3">Free Bonus #1</h3>
+                                <p class="heading-4">The Ultimate Tea Remedies</p>
+                                <p class="small mb-0">(instant download)</p>
+                            </div>
+                        </div>
+                        <div class="theme-border-radius-sm blue-light-bg d-md-flex p-4 p-md-5 align-items-center">
+                            <div class="col-5 col-md-3 mx-auto mb-4 mb-md-0">
+                                <picture class="img-fluid">
+                                    <source media="(min-width: 500px)" srcset="images/book2.jpg">
+                                    <source srcset="images/book2-m.jpg">
+                                    <img srcset="images/book2-m.jpg 200w, images/book2.jpg 600w" sizes="(max-width: 500px) 200px, 600px" src="images/book2.jpg" alt="Free Bonus Learn How to Manage Diabetes" class="img-fluid theme-border-radius-sm">
+                                </picture>
+                            </div>
+                            <div class="col-9 mx-auto ps-md-5 text-center text-md-start">
+                                <h3 class="heading-3">Free Bonus #2</h3>
+                                <p class="heading-4">Learn How to Manage Type II Diabetes</p>
+                                <p class="small mb
+
+-0">(instant download)</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4 mt-sm-5"><a href="#prices-2" class="btn-new btn-primary-new d-block d-sm-inline-block">Order Now</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-sm-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-10 mx-auto text-center">
+                <h2 class="heading-2 mb-4 mb-sm-5">Inside Every <span class="fw-bold">Sugar Defender</span> Drop You'll Find:</h2>
+                <p class="mb-5">8 Carefully-Selected Ingredients That Support Healthy Blood Sugar Levels, Including:</p>
+            </div>
+            <div class="col-12 col-xl-10 mx-auto text-center">
+                <div class="row justify-content-center">
+                    <div class="col-6 col-sm-4 col-lg-3 mb-5">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-eleuthero.jpg" alt="Eleuthero" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Eleuthero</p>
+                        <p class="mb-0 small">Increases Energy and Reduces Fatigue</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3 mb-5">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-coleus.jpg" alt="Coleus" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Coleus</p>
+                        <p class="mb-0 small">Fat Burning Aid</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3 mb-5">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-maca-root.jpg" alt="Maca Root" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Maca Root</p>
+                        <p class="mb-0 small">Boosts Your Energy</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3 mb-5">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-african-mango.jpg" alt="African Mango" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">African Mango</p>
+                        <p class="mb-0 small">Fat Burning Agent</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3 mb-5 mb-lg-0">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-guarana.jpg" alt="Guarana" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Guarana</p>
+                        <p class="mb-0 small">Stimulates Your Metabolism</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3 mb-5 mb-lg-0">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-gymnema.jpg" alt="Gymnema" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Gymnema</p>
+                        <p class="mb-0 small">Supports Healthy Heart &amp; Blood Sugar</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-ginseng-root.jpg" alt="Ginseng" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Ginseng</p>
+                        <p class="mb-0 small">Supports Healthy Blood Glucose</p>
+                    </div>
+                    <div class="col-6 col-sm-4 col-lg-3">
+                        <div class="bg-light theme-border-radius p-2-5">
+                            <img src="images/i-chromium-picolinate.jpg" alt="Chromium" class="img-fluid theme-border-radius-sm">
+                        </div>
+                        <p class="fw-bold heading-4 my-1">Chromium</p>
+                        <p class="mb-0 small">Reduces Obesity &amp; Lowers Blood Pressure</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="theme-border-radius red-gradient-bg text-white d-md-flex p-4 p-sm-5 align-items-center d-flex flex-wrap">
+                    <div class="col-12 col-md-7 order-2 order-md-1 px-lg-5 text-center text-md-start">
+                        <h2 class="heading-3 mb-4">Every 6 Bottles Order <br> Gets FREE Shipping Too!</h2>
+                        <p>*96% Of Customers Order 6 Bottles (Our Recommended Option)</p>
+                        <p>60-Day Money Back Guarantee 100% Satisfaction Guaranteed</p>
+                        <div class="mt-4 mt-sm-5"><a href="#prices-2" class="btn-new btn-primary-new d-block d-sm-inline-block">Order Now</a></div>
+                    </div>
+                    <div class="col-12 col-md-5 mx-auto order-1 order-md-2 mb-4 mb-md-0 px-lg-5">
+                        <picture class="img-fluid">
+                            <source media="(min-width: 500px)" srcset="images/1bottle-fruits.webp" type="image/webp">
+                            <source srcset="images/1bottle-fruits-m.webp" type="image/webp">
+                            <source media="(min-width: 500px)" srcset="images/1bottle-fruits.png" type="image/png">
+                            <source srcset="images/1bottle-fruits-m.png" type="image/png">
+                            <img srcset="images/1bottle-fruits-m.png 500w, images/1bottle-fruits.png 800w" sizes="(max-width: 500px) 500px, 800px" src="images/1bottle-fruits.png" alt="1 Bottles of Sugar Defender with fruits" class="img-fluid">
+                        </picture>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="reviews" class="py-sm-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-10 mx-auto">
+                <h2 class="text-center heading-2 mb-5">Real Customers <br> Real Life Changing Results</h2>
+            </div>
+            <div class="col-12 col-sm-10 mx-auto d-flex flex-wrap mb-5">
+                <div class="col-6 col-md-3 px-1 mb-2 mb-md-0">
+                    <picture class="img-fluid">
+                        <source media="(min-width: 500px)" srcset="images/person5.jpg">
+                        <img src="images/person5-m.jpg" alt="Person Holding Sugar Defender" class="img-fluid theme-border-radius">
+                    </picture>
+                </div>
+                <div class="col-6 col-md-3 px-1 mb-2 mb-md-0">
+                    <picture class="img-fluid">
+                        <source media="(min-width: 500px)" srcset="images/person1.jpg">
+                        <img src="images/person1-m.jpg" alt="Person 2 Holding Sugar Defender" class="img-fluid theme-border-radius">
+                    </picture>
+                </div>
+                <div class="col-6 col-md-3 px-1">
+                    <picture class="img-fluid">
+                        <source media="(min-width: 500px)" srcset="images/person2.jpg">
+                        <img src="images/person2-m.jpg" alt="Person 3 Holding Sugar Defender" class="img-fluid theme-border-radius">
+                    </picture>
+                </div>
+                <div class="col-6 col-md-3 px-1">
+                    <picture class="img-fluid">
+                        <source media="(min-width: 500px)" srcset="images/person4.jpg">
+                        <img src="images/person4-m.jpg" alt="Person 4 Holding Sugar Defender" class="img-fluid theme-border-radius">
+                    </picture>
+                </div>
+            </div>
+            <div class="col-12 position-relative faqs-bg pb-5">
+                <div class="col-12 col-sm-10 mx-auto mb-4 position-relative z-1 pt-5 pt-md-0">
+                    <div class="bg
+
+-white theme-border-radius d-flex flex-wrap p-4 p-md-5 align-items-center text-center text-md-start">
+                        <div class="col-4 mx-auto col-md-2 text-center mb-4 mb-md-0">
+                            <img src="images/sean.jpg" alt="Sean Review" class="img-fluid rounded-circle">
+                        </div>
+                        <div class="col-12 col-md-9 ps-md-5">
+                            <p class="fst-italic">“Very happy with the results. My blood sugar is stable and I have more energy. Product is great. Looked up helpful plants, vitamins and minerals and started buying them separately, but found this product and all were included!”</p>
+                            <p><span class="fw-bold">Sean B.</span> - North Carolina, USA</p>
+                            <p class="mb-0"><img src="images/stars.png" alt="5 Stars" class="img-fluid pb-2"> <span class="pt-1 ps-2">Verified Purchase</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-10 mx-auto mb-4 position-relative z-1">
+                    <div class="bg-white theme-border-radius d-flex flex-wrap p-4 p-md-5 align-items-center text-center text-md-start">
+                        <div class="col-4 mx-auto col-md-2 text-center mb-4 mb-md-0">
+                            <img src="images/jack.jpg" alt="jack Review" class="img-fluid rounded-circle">
+                        </div>
+                        <div class="col-12 col-md-9 ps-md-5">
+                            <p class="fst-italic">“I really like this product! I've been taking another blood sugar support product for several years that is much more expensive and I thought I'd give this a try. Works just as well as the more expensive but yes, for less cost!! Thank you!”</p>
+                            <p><span class="fw-bold">Jack S.</span> - Arizona, USA</p>
+                            <p class="mb-0"><img src="images/stars.png" alt="5 Stars" class="img-fluid pb-2"> <span class="pt-1 ps-2">Verified Purchase</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-10 mx-auto mb-4 position-relative z-1">
+                    <div class="bg-white theme-border-radius d-flex flex-wrap p-4 p-md-5 align-items-center text-center text-md-start">
+                        <div class="col-4 mx-auto col-md-2 text-center mb-4 mb-md-0">
+                            <img src="images/sabine.jpg" alt="sabine Review" class="img-fluid rounded-circle">
+                        </div>
+                        <div class="col-12 col-md-9 ps-md-5">
+                            <p class="fst-italic">“I give this supplement 5 stars. It does everything it claims to do! My sugar is down from 200's plus to 123 to 140 I have lost 6 pounds without even really trying or changing my diet! Now, If I watch my diet and sugar, I see myself possibly lowering my sugar enough to get off prescription sugar meds... I have been taking this supplement for a little over a month. I love it! I have tried so many supplements and they did not work. This one does!!!”</p>
+                            <p><span class="fw-bold">Sabine G.</span> - Texas, USA</p>
+                            <p class="mb-0"><img src="images/stars.png" alt="5 Stars" class="img-fluid pb-2"> <span class="pt-1 ps-2">Verified Purchase</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-10 mx-auto position-relative z-1 mb-md-5">
+                    <div class="bg-white theme-border-radius d-flex flex-wrap p-4 p-md-5 align-items-center text-center text-md-start">
+                        <div class="col-4 mx-auto col-md-2 text-center mb-4 mb-md-0">
+                            <img src="images/robert.jpg" alt="robert Review" class="img-fluid rounded-circle">
+                        </div>
+                        <div class="col-12 col-md-9 ps-md-5">
+                            <p class="fst-italic">“ I have tried this for almost 3 months already. It worked!!! It did lower my blood sugars. And it's a great value as I have tried another product that costs more than twice and did not work as well as this Sugar Defender herbal supplement. Recommend!”</p>
+                            <p><span class="fw-bold">Robert B.</span> - California, USA</p>
+                            <p class="mb-0"><img src="images/stars.png" alt="5 Stars" class="img-fluid pb-2"> <span class="pt-1 ps-2">Verified Purchase</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="prices-2" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="heading-2 mb-5">Take advantage of this limited offer to stock up on <span class="fw-bold">Sugar Defender</span> while supplies last!</h2>
+                <div class="countdown mb-4 mb-sm-5">
+                    <div hidden="">
+                        <span class="days"></span>
+                        <div class="text">Days</div>
+                    </div>
+                    <div hidden="">
+                        <span class="hours"></span>
+                        <div class="text">Hours</div>
+                    </div>
+                    <div class="ms-3">
+                        <span class="minutes"></span>
+                        <div class="text">Minutes</div>
+                    </div>
+                    <div>
+                        <span class="seconds"></span>
+                        <div class="text">Seconds</div>
+                    </div>
+                    <div class="mns" hidden="">minutes left!</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 mb-4 mb-md-0 order-3 order-md-1">
+                <div class="theme-border-radius border border-2 border-gray text-center p-4">
+                    <h3 class="mb-0 fw-bold">Try One</h3>
+                    <p class="small mb-0">30 Day Supply</p>
+                    <div class="col-9 mx-auto py-3">
+                        <picture>
+                            <source srcset="images/SUGARDEFENDERx1-500px.webp" type="image/webp">
+                            <img src="images/SUGARDEFENDERx1-500px.png" alt="Sugar Defender 1 Bottle" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h4 class="display-2 fw-bold">$69</h4>
+                        <div class="ms-2 pb-2 small">
+                            <span class="d-block text-start">Per</span>
+                            <span class="d-block text-start">Bottle</span>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-2">YOU SAVE $110</p>
+                    <p class="text-white d-none d-md-block">No bonuses</p>
+                    <div class="col-12 text-center mb-4">
+                        <a class="cta addToCart btn-new btn-primary-new d-block px-0" data-sku="SDF01" data-price="69" data-link-type="vsl-cta" data-link-index="1" data-callback="ctaEvents" href="https://www.buygoods.com/secure/checkout.html?account_id=8721&amp;product_codename=SDF01&amp;redirect=aHR0cHM6Ly9zdWdhcmRlZmVuZGVyMjQuY29tL2IvdTEudi4xMzIucGhw&amp;vid1=eyJpZCI6IjMxNDczMTcxNzY5NDE4MCJ9&amp;vid2=eyJob3N0Ijoic3VnYXJkZWZlbmRlcjI0LmNvbSIsInBhZ2UiOiJiXC8xMDEucGhwIn0=" target="_blank">Add to cart</a>
+                    </div>
+                    <p class="small mb-3">60 Day Money-Back Guarantee</p>
+                    <div class="col-7 mx-auto mb-3">
+                        <picture>
+                            <source srcset="images/cards.webp" type="image/webp">
+                            <img src="images/cards.png" alt="Card" class="img-fluid">
+                        </picture>
+                    </div>
+                    <p class="mb-1">TOTAL: <span class="text-decoration-line-through">$179</span> <span class="fw-bold">$69</span></p>
+                    <p class="fw-bold mb-0">+ SHIPPING</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4 mb-md-0 order-1 order-md-2">
+                <div class="theme-border-radius border-primary-new text-center p-4">
+                    <h3 class="mb-0
+
+ fw-bold">Best Value</h3>
+                    <p class="small mb-0">180 Day Supply</p>
+                    <div class="col-9 mx-auto py-3">
+                        <picture>
+                            <source srcset="images/SUGARDEFENDERx6-500px.webp" type="image/webp">
+                            <img src="images/SUGARDEFENDERx6-500px.png" alt="Sugar Defender 6 Bottle" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h4 class="display-2 fw-bold">$49</h4>
+                        <div class="ms-2 pb-2 small">
+                            <span class="d-block text-start">Per</span>
+                            <span class="d-block text-start">Bottle</span>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-2">YOU SAVE $780</p>
+                    <p>+ 2 FREE E-BOOKS</p>
+                    <div class="col-12 text-center mb-4">
+                        <a class="cta addToCart btn-new btn-primary-new d-block px-0" data-sku="SDF06" data-price="294" data-link-type="vsl-cta" data-link-index="6" data-callback="ctaEvents" href="https://www.buygoods.com/secure/checkout.html?account_id=8721&amp;product_codename=SDF06&amp;redirect=aHR0cHM6Ly9zdWdhcmRlZmVuZGVyMjQuY29tL2IvdTEucGhw&amp;vid1=eyJpZCI6IjMxNDczMTcxNzY5NDE4MCJ9&amp;vid2=eyJob3N0Ijoic3VnYXJkZWZlbmRlcjI0LmNvbSIsInBhZ2UiOiJiXC8xMDEucGhwIn0=" target="_blank">Add to cart</a>
+                    </div>
+                    <p class="small mb-3">60 Day Money-Back Guarantee</p>
+                    <div class="col-7 mx-auto mb-3">
+                        <picture>
+                            <source srcset="images/cards.webp" type="image/webp">
+                            <img src="images/cards.png" alt="Card" class="img-fluid">
+                        </picture>
+                    </div>
+                    <p class="mb-1">TOTAL: <span class="text-decoration-line-through">$1074</span> <span class="fw-bold">$294</span></p>
+                    <p class="fw-bold mb-0">+ FREE US SHIPPING</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mb-4 order-2 order-md-3">
+                <div class="theme-border-radius border border-2 border-gray text-center p-4">
+                    <h3 class="mb-0 fw-bold">Most Popular</h3>
+                    <p class="small mb-0">90 Day Supply</p>
+                    <div class="col-9 mx-auto py-3">
+                        <picture>
+                            <source srcset="images/SUGARDEFENDERx3-500px.webp" type="image/webp">
+                            <img src="images/SUGARDEFENDERx3-500px.png" alt="Sugar Defender 3 Bottle" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h4 class="display-2 fw-bold">$59</h4>
+                        <div class="ms-2 pb-2 small">
+                            <span class="d-block text-start">Per</span>
+                            <span class="d-block text-start">Bottle</span>
+                        </div>
+                    </div>
+                    <p class="fw-bold mb-2">YOU SAVE $360</p>
+                    <p>+ 2 FREE E-BOOKS</p>
+                    <div class="col-12 text-center mb-4">
+                        <a class="cta addToCart btn-new btn-primary-new d-block px-0" data-sku="SDF03" data-price="177" data-link-type="vsl-cta" data-link-index="3" data-callback="ctaEvents" href="https://www.buygoods.com/secure/checkout.html?account_id=8721&amp;product_codename=SDF03&amp;redirect=aHR0cHM6Ly9zdWdhcmRlZmVuZGVyMjQuY29tL2IvdTEucGhw&amp;vid1=eyJpZCI6IjMxNDczMTcxNzY5NDE4MCJ9&amp;vid2=eyJob3N0Ijoic3VnYXJkZWZlbmRlcjI0LmNvbSIsInBhZ2UiOiJiXC8xMDEucGhwIn0=" target="_blank">Add to cart</a>
+                    </div>
+                    <p class="small mb-3">60 Day Money-Back Guarantee</p>
+                    <div class="col-7 mx-auto mb-3">
+                        <picture>
+                            <source srcset="images/cards.webp" type="image/webp">
+                            <img src="images/cards.png" alt="Card" class="img-fluid">
+                        </picture>
+                    </div>
+                    <p class="mb-1">TOTAL: <span class="text-decoration-line-through">$537</span> <span class="fw-bold">$177</span></p>
+                    <p class="fw-bold mb-0">+ FREE US SHIPPING</p>
+                </div>
+            </div>
+            <div class="col-12 text-center mt-sm-3 order-4">
+                <p>Our customers say <span class="fw-bold me-2">4.98/5</span> <img src="images/stars.png" alt="Stars" class="img-fluid pb-2"> <span class="ms-2">based on 2000+ reviews</span></p>
+                <div><a href="#reviews" class="text-dark">View Reviews</a> | <a href="#faqs" class="text-dark">View FAQ’s</a></div>
+            </div>
+        </div> 
+    </div>
+</section>
+<section class="py-5 mb-md-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="heading-2 text-center mb-4 mb-md-5">Scientific <span class="fw-bold">References</span></h2>
+            </div>
+            <div class="col-11 col-md-10 col-lg-8 mx-auto d-sm-flex">
+                <div class="col-sm-6"><img src="images/refs1.jpg" alt="References" class="img-fluid"></div>
+                <div class="col-sm-6"><img src="images/refs2.jpg" alt="References" class="img-fluid"></div>
+            </div>
+            <div class="col-12  my-3"><p class="p-3 mb-0 text-center reference-text">The company is not endorsed by, sponsored by, or affiliated with any of these organizations</p></div>
+            <div class="col-12 col-sm-6">
+                <ol class="reference-text">
+                    <li> Healthy behavior change and cardiovascular outcomes in newly diagnosed type 2 diabetic patients: a cohort analysis of the ADDITION-Cambridge study</li>
+                    <li> Reversing Type 2 Diabetes and ongoing remission <br></li>
+                    <li> Role of chromium supplementation in Indians with type 2 diabetes mellitus <br></li>
+                    <li> Understanding the root causes of diabetes to develop effective therapies <br></li>
+                    <li> Elevated intakes of supplemental chromium improve glucose and insulin variables in individuals with type 2 diabetes <br></li>
+                    <li> Effects of short-term chromium supplementation on insulin sensitivity and body composition in overweight children: randomized, double-blind, placebo-controlled study <br></li>
+                    <li> Chromium supplementation shortens QTc interval duration in patients with type 2 diabetes mellitus <br></li>
+                    <li> Effect of chromium on glucose and lipid profiles in patients with type 2 diabetes; a meta-analysis review of randomized trials <br></li>
+                    <li> Ginseng therapy in non-insulin-dependent diabetic patients <br></li>
+                    <li> Single doses of Panax ginseng (G115) reduce blood glucose levels and improve cognitive performance during sustained mental activity <br></li>
+                    <li> Effect of Korean red ginseng on arterial stiffness in subjects with hypertension <br></li>
+                    <li> Yale scientists study how some insulin-producing cells survive in type 1 diabetes <br></li>
+                </ol>
+            </div>
+            <div class="col-12 col-sm-6">
+                <ol class="reference-text" start="13">
+                    <li> Effects of oral L-carnitine supplementation on insulin sensitivity indices in response to glucose feeding in lean and overweight/obese males�&nbsp;<br></li>
+                    <li> Effects of Panax ginseng supplementation on muscle damage and inflammation after uphill treadmill running in humans <br></li>
+                    <li> Ameliorating hypertension and insulin resistance in subjects at increased cardiovascular risk: effects of acetyl-L-carnitine therapy <br></li>
+                    <li> The effects of L-carnitine supplementation on glycemic control: a systematic review and meta-analysis of randomized controlled
+
+ trials <br></li>
+                    <li> Pharmacokinetic and the effect of capsaicin in Capsicum frutescens on decreasing plasma glucose level <br></li>
+                    <li>The effect of eight weeks of supplementation with Eleutherococcus senticosus on endurance capacity and metabolism in human <br></li>
+                    <li> Effect of 2-month controlled green tea intervention on lipoprotein cholesterol, glucose, and hormone levels in healthy postmenopausal women <br></li>
+                    <li>The effect of Irvingia gabonensis seeds on body weight and blood lipids of obese subjects in Cameroon<br></li>
+                    <li>Acceptability, Safety, and Efficacy of Oral Administration of Extracts of Black or Red Maca (Lepidium meyenii) in Adult Human Subjects: A Randomized, Double-Blind, Placebo-Controlled Study<br></li>
+                </ol>
+            </div>
+            <div class="col-8 col-md-6 col-lg-4 mx-auto mt-md-4 position-relative">
+                <picture>
+                    <source srcset="images/bottle-label.webp" type="image/webp">
+                    <img src="images/bottle-label.jpg" alt="Bottle Label" class="img-fluid">
+                </picture>
+                <button type="button" class="modal-label" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                </button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content">
+                            <div class="text-end">
+                                <button type="button" class="btn-close p-3 p-sm-4" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body pt-0">
+                                <picture class="d-none d-lg-block">
+                                    <source srcset="images/label-sugardender.webp" type="image/webp">
+                                    <img src="images/label-sugardender.jpg" alt="Label Sugardefender" class="img-fluid">
+                                </picture>
+                                <picture class="d-block d-lg-none">
+                                    <source srcset="images/mobile-label.webp" type="image/webp">
+                                    <img src="images/mobile-label.jpg" alt="Label Sugardefender" class="img-fluid">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="text-center bg-dark py-md-5">
+    <div class="container text-white py-5">
+        <ul class="list-inline small mb-4">
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/info/contact.html" target="_blank">Contact</a></li>
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/info/terms.html" target="_blank">Terms</a></li>
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/info/privacy.html" target="_blank">Privacy</a></li>
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/info/return-policy.html" target="_blank">Return Policy</a></li>
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/info/shipping.html" target="_blank">Shipping</a></li>
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/info/disclamer.html" target="_blank">Disclaimer</a></li>
+            <li class="list-inline-item"><a class="link-light text-decoration-none" href="/unsubscribe.php" target="_blank">Report Spam</a></li>
+        </ul>
+        <div class="row">
+            <div class="col-md-8 col-lg-6 mx-auto border-bottom border-light mb-4">
+                <picture>
+                    <source srcset="images/buygoods.webp" type="image/webp">
+                    <img src="images/buygoods.png" alt="Buygoods Logo" class="img-fluid w-50 pb-3">
+                </picture>
+            </div>
+            <div class="col-md-10 mx-auto">
+                <p class="fw-light reference-text ">BuyGoods is the retailer of this product. BuyGoods is a registered trademark of BuyGoods, a Delaware corporation located at 1201 N Orange Street Suite #7223, Wilmington, DE, 19801, USA and used by permission. BuyGoods role as retailer does not constitute an endorsement, approval or review of this product or any claim, statement or opinion used in promotion of this product. Statements on this website have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure or prevent any disease.</p>
+            </div>
+        </div>
+        <div></div>
+        <p class="text-muted mb-0 small">© Sugar Defender Research 2024 All Rights Reserved. </p>
+    </div>
+</footer>
+<script src="js/bootstrap.min.js"></script>
+<script>activePlayer="vturb"</script>
+<script src="js/script.min.js"></script>
+<script>
+    vTurb.config = {
+        SECONDS_TO_DISPLAY: 1295, // 1295 # of seconds after cointating div should display
+        CLASS_TO_DISPLAY: "#dtc" // cointating divID that should display after # of seconds
+    }
+
+    vTurb.callback = function () {
+        helper.initCountdown();
+    }
+
+    vTurb.timers();       
+</script>
+<script>
+    function trackInitiateCheckout(elemClass){
+        url = "halfkjrjd3ew";
+        nid = 2137;
+        init_id = 43;
+        if (typeof evf === 'undefined') {
+            window.evf = {};
+        }
+        evf.url = url;
+        evf.nid = nid;
+        evf.init_id = init_id;
+        evf.checkoutStarted = false;
+
+        evf.urlParam = function (param) {
+            var t = new RegExp("[?&]" + param + "=([^&#]*)").exec(window.location.href);
+            return null === t ? null : t[1] || 0
+        }
+
+        evf.addToCartEvent = function () {
+            if (!evf.checkoutStarted) {
+                evf.checkoutStarted = true;
+                evf.script = document.createElement('iframe');
+                evf.script.width = 1;
+                evf.script.height = 1;
+                evf.script.frameBorder = 0;
+                evf.script.transaction_id = evf.urlParam('subid2');
+                evf.script.src = "https://www." + evf.url + ".com/?nid=" + evf.nid + "&event_id=" + evf.init_id  + "&transaction_id=" + evf.script.transaction_id + "";
+                document.getElementsByTagName('body')[0].appendChild(evf.script);
+
+                console.log('Track InitiateCheckout Event');    
+                if (typeof(runPixels) === 'function'){
+                    runPixels("InitiateCheckout");
+                }         
+            }
+        }
+
+        evf.buttons = document.getElementsByClassName(elemClass);
+        for (var i = 0; i < evf.buttons.length; i++) {
+            evf.buttons[i].addEventListener('click', evf.addToCartEvent, false);
+        }
+    }
+
+</script><script>trackInitiateCheckout("addToCart");</script>
+<script>document.querySelectorAll("[data-disable-user-interaction]").forEach((function (e) { e.classList.add("no-user-interaction"), e.addEventListener("contextmenu", (function (e) { e.preventDefault() })) }))</script>
+<script>
+    // const task1 = (flag) => { console.log('Running task 1'); flag('taskFinished'); };
+
+    const tasks = [
+        // { task: task1, message: 'Test Task Running!' },
+        { task: loadBGScript, message: 'Adding BG Tracker' },
+    ];
+
+    const scheduler = new TaskScheduler(tasks);
+    scheduler.start();
+</script>
+
+
+<iframe src="https://buygoods.com/affiliates/go/conversion/iframe/bg?a=8721&amp;t=9c1403bbbf7cb6b12ddb9927a7fbd88d&amp;s=" style="display: none;"></iframe>
 </body>
 </html>
-```
